@@ -4,8 +4,8 @@ import './globals.css'
 import { AppShell } from '@/components/layout/AppShell'
 
 export const metadata: Metadata = {
-  title: 'BBC Play · Product hub',
-  description: 'Internal product operating hub for BBC Play — embedded games in articles',
+  title: 'Play Product Hub',
+  description: 'Internal product operating hub for the Play project',
 }
 
 const bbcReith = localFont({
