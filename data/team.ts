@@ -1,7 +1,5 @@
 import type { TeamMember } from '@/types'
 
-const placeholderImage = '/profiles/placeholder-profile.svg'
-
 export const bbcTrio: TeamMember[] = [
   {
     id: 'rheem-al-adhami',
@@ -9,6 +7,7 @@ export const bbcTrio: TeamMember[] = [
     roleTitle: 'Head of Software Engineering',
     group: 'BBC Trio',
     profileImage: '/profiles/rheem-al-adhami.jpg',
+    audience: ['Tech', 'Stakeholder'],
     projectRole: 'Technical leadership and architectural oversight.',
     responsibilities: [
       'Technical strategy and feasibility oversight',
@@ -22,6 +21,7 @@ export const bbcTrio: TeamMember[] = [
     roleTitle: 'Group Product Manager',
     group: 'BBC Trio',
     profileImage: '/profiles/adam-flint.jpg',
+    audience: ['Stakeholder'],
     projectRole: 'Product leadership and strategic direction.',
     responsibilities: [
       'Product strategy and prioritisation',
@@ -35,6 +35,7 @@ export const bbcTrio: TeamMember[] = [
     roleTitle: 'Creative Director of UX and Design',
     group: 'BBC Trio',
     profileImage: '/profiles/bob-hamilton.jpg',
+    audience: ['Design'],
     projectRole: 'Design and experience leadership.',
     responsibilities: [
       'Experience/design direction',
@@ -51,6 +52,7 @@ export const hippoDeliveryTeam: TeamMember[] = [
     roleTitle: 'Service and Product Ops',
     group: 'Hippo Delivery Team',
     profileImage: '/profiles/jack-haith.jpg',
+    audience: ['Product'],
     projectRole: 'Service design, operational modelling, product operations.',
     responsibilities: [
       'Operational readiness planning',
@@ -64,6 +66,7 @@ export const hippoDeliveryTeam: TeamMember[] = [
     roleTitle: 'Delivery Manager',
     group: 'Hippo Delivery Team',
     profileImage: '/profiles/caroline-kippler.jpg',
+    audience: ['Product'],
     projectRole: 'Delivery planning and coordination.',
     responsibilities: [
       'Delivery management',
@@ -77,6 +80,7 @@ export const hippoDeliveryTeam: TeamMember[] = [
     roleTitle: 'Principal Engineer',
     group: 'Hippo Delivery Team',
     profileImage: '/profiles/steady.jpg',
+    audience: ['Tech'],
     projectRole: 'Technical architecture and feasibility lead.',
     responsibilities: [
       'Technical feasibility investigation',
@@ -90,6 +94,7 @@ export const hippoDeliveryTeam: TeamMember[] = [
     roleTitle: 'Engineer',
     group: 'Hippo Delivery Team',
     profileImage: '/profiles/chris-wintle.jpg',
+    audience: ['Tech'],
     projectRole: 'Implementation and engineering support.',
     responsibilities: [
       'Build and implementation',
@@ -103,6 +108,7 @@ export const hippoDeliveryTeam: TeamMember[] = [
     roleTitle: 'Design',
     group: 'Hippo Delivery Team',
     profileImage: '/profiles/jon-maher.jpg',
+    audience: ['Design'],
     projectRole: 'Game and experience design.',
     responsibilities: [
       'Game concept development',
@@ -116,6 +122,7 @@ export const hippoDeliveryTeam: TeamMember[] = [
     roleTitle: 'Design',
     group: 'Hippo Delivery Team',
     profileImage: '/profiles/joe-worthington.jpg',
+    audience: ['Design'],
     projectRole: 'Game and experience design.',
     responsibilities: [
       'Game concept development',

@@ -1,9 +1,17 @@
+'use client'
+
 import { PageHeader } from '@/components/ui/PageHeader'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { TeamMemberCard } from '@/components/TeamMemberCard'
 import { bbcTrio, hippoDeliveryTeam } from '@/data/team'
+import { useView } from '@/context/ViewContext'
+import { filterByView } from '@/lib/audience'
 
 export default function TeamPage() {
+  const { view } = useView()
+  const visibleBbcTrio = filterByView(bbcTrio, view)
+  const visibleHippoDeliveryTeam = filterByView(hippoDeliveryTeam, view)
+
   return (
     <div className="max-w-6xl">
       <PageHeader
@@ -15,13 +23,13 @@ export default function TeamPage() {
       <div className="space-y-10">
         {/* BBC Trio */}
         <section>
-          <SectionHeading title="BBC Trio" count={bbcTrio.length} />
+          <SectionHeading title="BBC Trio" count={visibleBbcTrio.length} />
           <p className="text-sm text-slate-600 leading-relaxed mb-4">
             Strategic leadership and decision-making group responsible for product direction,
             experiment approval, and major delivery decisions.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-            {bbcTrio.map((member) => (
+            {visibleBbcTrio.map((member) => (
               <TeamMemberCard key={member.id} member={member} />
             ))}
           </div>
@@ -29,13 +37,13 @@ export default function TeamPage() {
 
         {/* Hippo Delivery Team */}
         <section>
-          <SectionHeading title="Hippo Delivery Team" count={hippoDeliveryTeam.length} />
+          <SectionHeading title="Hippo Delivery Team" count={visibleHippoDeliveryTeam.length} />
           <p className="text-sm text-slate-600 leading-relaxed mb-4">
             Cross-functional delivery team responsible for execution, design, engineering,
             service operations, and implementation.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-            {hippoDeliveryTeam.map((member) => (
+            {visibleHippoDeliveryTeam.map((member) => (
               <TeamMemberCard key={member.id} member={member} />
             ))}
           </div>

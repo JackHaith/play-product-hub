@@ -120,4 +120,5 @@ export interface TeamMember {
   profileImage: string
   projectRole: string
   responsibilities: string[]
+  audience?: Audience[]
 }

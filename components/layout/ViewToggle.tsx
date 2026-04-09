@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 import { usePathname } from 'next/navigation'
 
 const views: ViewType[] = ['Product', 'Design', 'Tech', 'Stakeholder']
-const viewDisabledPaths = new Set(['/team', '/metrics', '/phases'])
+const viewDisabledPaths = new Set(['/metrics', '/phases'])
 
 export function ViewToggle() {
   const { view, setView } = useView()
