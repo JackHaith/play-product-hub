@@ -5,7 +5,7 @@ export const readiness3: ReadinessCheck = {
     title: 'Content removal controls',
     description:
       'A reliable and tested method exists to remove or amend the embedded game from an article quickly.',
-    status: 'Red',
+    status: 'Amber',
     audience: ['Stakeholder', 'Tech'],
   notes: 'Method not yet agreed or tested. Required before Phase 3.',
   }
