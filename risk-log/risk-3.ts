@@ -10,4 +10,5 @@ export const risk3: Risk = {
   mitigation:
     'Be deliberate about what the experiment is designed to test. Preferably test one major variable at a time. Consider replacing an existing game (Option A) to remove content risk from the first experiment.',
   relatedPhase: 'Phase 3',
+  audience: ['Product'],
 }

@@ -22,11 +22,14 @@ import {
 export default function OverviewPage() {
   const { view } = useView()
   const currentPhase = phases.find((p) => p.status === 'in-progress') ?? phases[0]
-  const openDecisions = decisions.filter((d) => d.status === 'Open')
-  const highRisks = risks.filter((r) => r.severity === 'High')
-  const greenChecks = readinessChecks.filter((r) => r.status === 'Green')
-  const amberChecks = readinessChecks.filter((r) => r.status === 'Amber')
-  const redChecks = readinessChecks.filter((r) => r.status === 'Red')
+  const visibleDecisions = filterByView(decisions, view)
+  const openDecisions = visibleDecisions.filter((d) => d.status === 'Open')
+  const visibleRisks = filterByView(risks, view)
+  const highRisks = visibleRisks.filter((r) => r.severity === 'High')
+  const visibleReadinessChecks = filterByView(readinessChecks, view)
+  const greenChecks = visibleReadinessChecks.filter((r) => r.status === 'Green')
+  const amberChecks = visibleReadinessChecks.filter((r) => r.status === 'Amber')
+  const redChecks = visibleReadinessChecks.filter((r) => r.status === 'Red')
   const visibleWorkstreams = filterByView(workstreams, view)
   const activeWorkstreams = visibleWorkstreams.filter((w) => w.status === 'active')
 
@@ -55,7 +58,7 @@ export default function OverviewPage() {
           <p className="text-xs text-slate-500 mt-0.5">Open decisions</p>
         </div>
         <div className="bg-white rounded-xl border border-slate-200 p-4">
-          <p className="text-2xl font-semibold text-slate-900">{risks.length}</p>
+          <p className="text-2xl font-semibold text-slate-900">{visibleRisks.length}</p>
           <p className="text-xs text-slate-500 mt-0.5">Tracked risks</p>
         </div>
         <div className="bg-white rounded-xl border border-slate-200 bg-slate-50/70 p-4">

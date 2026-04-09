@@ -6,5 +6,6 @@ export const readiness4: ReadinessCheck = {
     description:
       'The embedded game experience has been tested for performance and stability under realistic conditions.',
     status: 'Amber',
-    notes: 'Initial performance testing done. Load testing under real traffic conditions not yet complete.',
+    audience: ['Tech'],
+  notes: 'Initial performance testing done. Load testing under real traffic conditions not yet complete.',
   }

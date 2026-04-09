@@ -1,15 +1,16 @@
 import type { Decision } from '@/types'
 
 export const decision1: Decision = {
-    id: 'decision-1',
-    title: 'First live experiment approach',
-    status: 'Open',
-    owner: 'Product Trio (Product, Engineering, Editorial)',
-    relatedPhase: 'Phase 3',
-    whyItMatters:
-      'The choice of experiment type has a significant impact on risk, learning potential, and organisational complexity. This decision needs to be owned collectively by the trio before Phase 3 can begin.',
-    recommendation: undefined,
-    options: [
+  id: 'decision-1',
+  title: 'First live experiment approach',
+  status: 'Open',
+  owner: 'Rheem Al-Adhami, Adam Flint',
+  relatedPhase: 'Phase 3',
+  audience: ['Product', 'Stakeholder'],
+  whyItMatters:
+    'The choice of experiment type has a significant impact on risk, learning potential, and organisational complexity. This decision needs to be owned collectively by the trio before Phase 3 can begin.',
+  recommendation: undefined,
+  options: [
       {
         id: 'option-a',
         title: 'Replace an existing game',
@@ -48,11 +49,11 @@ export const decision1: Decision = {
           'Needs a technically reliable rollout control mechanism',
         ],
       },
-    ],
-    stakeholderQuestions: [
-      'Are we comfortable exposing this test to an existing BBC audience?',
-      'What level of failure risk is acceptable for the first live experiment?',
-      'Do we have sufficient confidence in technical stability to go live?',
-      'Who owns the decision if something goes wrong during the experiment?',
-    ],
-  }
+  ],
+  stakeholderQuestions: [
+    'Are we comfortable exposing this test to an existing BBC audience?',
+    'What level of failure risk is acceptable for the first live experiment?',
+    'Do we have sufficient confidence in technical stability to go live?',
+    'Who owns the decision if something goes wrong during the experiment?',
+  ],
+}

@@ -6,5 +6,6 @@ export const readiness7: ReadinessCheck = {
     description:
       'A consistent data structure and unique identifier system is in place for tracking across games and articles.',
     status: 'Amber',
-    notes: 'Draft data structure exists. Needs final sign-off from analytics team.',
+    audience: ['Tech'],
+  notes: 'Draft data structure exists. Needs final sign-off from analytics team.',
   }

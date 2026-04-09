@@ -1,16 +1,17 @@
 import type { Decision } from '@/types'
 
 export const decision2: Decision = {
-    id: 'decision-2',
-    title: 'Rollout and distribution strategy',
-    status: 'Open',
-    owner: 'Steady + Product',
-    relatedPhase: 'Phase 3',
-    whyItMatters:
-      'The way we limit exposure to a subset of users is a critical safety mechanism for the first live experiment. Without this, any issues affect the full audience immediately.',
-    recommendation:
-      'Recommend a phased or percentage-based rollout approach to limit initial exposure before widening.',
-    options: [
+  id: 'decision-2',
+  title: 'Rollout and distribution strategy',
+  status: 'Open',
+  owner: 'Rheem Al-Adhami, Adam Flint',
+  relatedPhase: 'Phase 3',
+  audience: ['Product', 'Tech', 'Stakeholder'],
+  whyItMatters:
+    'The way we limit exposure to a subset of users is a critical safety mechanism for the first live experiment. Without this, any issues affect the full audience immediately.',
+  recommendation:
+    'Recommend a phased or percentage-based rollout approach to limit initial exposure before widening.',
+  options: [
       {
         id: 'rollout-full',
         title: 'Full release',
@@ -30,10 +31,10 @@ export const decision2: Decision = {
           'Smaller initial sample may slow data collection',
         ],
       },
-    ],
-    stakeholderQuestions: [
-      'What is the technically reliable method for limiting exposure to a subset of users?',
-      'What percentage of users is acceptable for the initial launch?',
-      'What are the criteria for widening rollout?',
-    ],
-  }
+  ],
+  stakeholderQuestions: [
+    'What is the technically reliable method for limiting exposure to a subset of users?',
+    'What percentage of users is acceptable for the initial launch?',
+    'What are the criteria for widening rollout?',
+  ],
+}

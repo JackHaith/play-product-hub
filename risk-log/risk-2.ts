@@ -10,4 +10,5 @@ export const risk2: Risk = {
   mitigation:
     'Validate analytics linkage during Phase 2 private testing before committing to live. Define the data structure and identifiers in Phase 1 as a prerequisite.',
   relatedPhase: 'Phase 2',
+  audience: ['Tech', 'Stakeholder'],
 }

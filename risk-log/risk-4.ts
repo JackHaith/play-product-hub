@@ -10,4 +10,5 @@ export const risk4: Risk = {
   mitigation:
     'Confirm the technical rollout control mechanism as part of Phase 1 capabilities. Do not proceed to Phase 3 without this in place.',
   relatedPhase: 'Phase 3',
+  audience: ['Tech', 'Stakeholder'],
 }

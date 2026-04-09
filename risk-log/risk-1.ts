@@ -10,4 +10,5 @@ export const risk1: Risk = {
   mitigation:
     'Use a controlled rollout to limit initial exposure. Ensure content removal processes are tested and rehearsed before going live. Have a clear incident response plan agreed by the team.',
   relatedPhase: 'Phase 3',
+  audience: ['All'],
 }

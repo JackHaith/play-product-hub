@@ -6,5 +6,6 @@ export const readiness5: ReadinessCheck = {
     description:
       'A technical mechanism exists to limit the live experiment to a defined percentage of users.',
     status: 'Red',
-    notes: 'Not yet defined or implemented. A blocker for Phase 3.',
+    audience: ['Tech', 'Stakeholder'],
+  notes: 'Not yet defined or implemented. A blocker for Phase 3.',
   }

@@ -6,5 +6,6 @@ export const readiness6: ReadinessCheck = {
     description:
       'The team has agreed on what success looks like and what metrics will be used to evaluate the experiment.',
     status: 'Red',
-    notes: 'Metrics proposed but not yet agreed across product, editorial, and analytics stakeholders.',
+    audience: ['Tech'],
+  notes: 'Metrics proposed but not yet agreed across product, editorial, and analytics stakeholders.',
   }

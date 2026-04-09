@@ -6,5 +6,6 @@ export const readiness2: ReadinessCheck = {
     description:
       'Analytics events are defined, implemented, and validated for game interactions.',
     status: 'Amber',
-    notes: 'Event schema defined. Full end-to-end validation pending Phase 2 testing.',
+    audience: ['Tech'],
+  notes: 'Event schema defined. Full end-to-end validation pending Phase 2 testing.',
   }

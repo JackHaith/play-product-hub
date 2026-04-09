@@ -6,5 +6,6 @@ export const readiness3: ReadinessCheck = {
     description:
       'A reliable and tested method exists to remove or amend the embedded game from an article quickly.',
     status: 'Red',
-    notes: 'Method not yet agreed or tested. Required before Phase 3.',
+    audience: ['Stakeholder', 'Tech'],
+  notes: 'Method not yet agreed or tested. Required before Phase 3.',
   }

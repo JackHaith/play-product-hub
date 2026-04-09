@@ -5,6 +5,8 @@ import { decisions } from '@/data/decisions'
 import { DecisionCard } from '@/components/DecisionCard'
 import { PageHeader } from '@/components/ui/PageHeader'
 import type { DecisionStatus } from '@/types'
+import { useView } from '@/context/ViewContext'
+import { filterByView } from '@/lib/audience'
 import { cn, decisionStatusConfig } from '@/lib/utils'
 
 type FilterValue = DecisionStatus | 'All'
@@ -18,10 +20,12 @@ const statusFilters: { label: string; value: FilterValue }[] = [
 ]
 
 export default function DecisionsPage() {
+  const { view } = useView()
   const [activeFilter, setActiveFilter] = useState<FilterValue>('All')
   const [search, setSearch] = useState('')
+  const visibleDecisions = filterByView(decisions, view)
 
-  const filtered = decisions.filter((d) => {
+  const filtered = visibleDecisions.filter((d) => {
     const matchesFilter = activeFilter === 'All' || d.status === activeFilter
     const q = search.toLowerCase()
     const matchesSearch =
@@ -33,10 +37,10 @@ export default function DecisionsPage() {
   })
 
   const counts: Record<DecisionStatus, number> = {
-    Open: decisions.filter((d) => d.status === 'Open').length,
-    Recommended: decisions.filter((d) => d.status === 'Recommended').length,
-    Decided: decisions.filter((d) => d.status === 'Decided').length,
-    Revisit: decisions.filter((d) => d.status === 'Revisit').length,
+    Open: visibleDecisions.filter((d) => d.status === 'Open').length,
+    Recommended: visibleDecisions.filter((d) => d.status === 'Recommended').length,
+    Decided: visibleDecisions.filter((d) => d.status === 'Decided').length,
+    Revisit: visibleDecisions.filter((d) => d.status === 'Revisit').length,
   }
 
   return (
@@ -53,7 +57,7 @@ export default function DecisionsPage() {
           {statusFilters.map((filter) => {
             const count =
               filter.value === 'All'
-                ? decisions.length
+                ? visibleDecisions.length
                 : counts[filter.value as DecisionStatus]
             const statusCfg =
               filter.value !== 'All' ? decisionStatusConfig[filter.value as DecisionStatus] : null

@@ -10,4 +10,5 @@ export const risk5: Risk = {
   mitigation:
     'Develop emergency kill switch to remove the game, game content or article at a moments notice.',
   relatedPhase: 'Phase 3',
+  audience: ['All'],
 }

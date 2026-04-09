@@ -1,16 +1,17 @@
 import type { Decision } from '@/types'
 
 export const decision3: Decision = {
-    id: 'decision-3',
-    title: 'Content removal method',
-    status: 'Recommended',
-    owner: 'Engineering + Editorial ops',
-    relatedPhase: 'Phase 3',
-    whyItMatters:
-      'If something goes wrong during a live experiment, the team needs a clear, fast, and editorially-appropriate way to remove or amend the content.',
-    recommendation:
-      'Use Optimo to remove or amend the article embed as the primary method. AWS console access as a technical fallback for game-level changes.',
-    options: [
+  id: 'decision-3',
+  title: 'Content removal method',
+  status: 'Recommended',
+  owner: 'Rheem Al-Adhami, Adam Flint',
+  relatedPhase: 'Phase 3',
+  audience: ['Tech', 'Stakeholder'],
+  whyItMatters:
+    'If something goes wrong during a live experiment, the team needs a clear, fast, and editorially-appropriate way to remove or amend the content.',
+  recommendation:
+    'Use Optimo to remove or amend the article embed as the primary method. AWS console access as a technical fallback for game-level changes.',
+  options: [
       {
         id: 'remove-optimo-embed',
         title: 'Remove game from article via Optimo',
@@ -46,10 +47,10 @@ export const decision3: Decision = {
           'Not available out-of-hours without on-call',
         ],
       },
-    ],
-    stakeholderQuestions: [
-      'Is Optimo removal reliable enough to be the primary mechanism?',
-      'Who is responsible for triggering removal if something goes wrong?',
-      'What are the out-of-hours escalation paths?',
-    ],
-  }
+  ],
+  stakeholderQuestions: [
+    'Is Optimo removal reliable enough to be the primary mechanism?',
+    'Who is responsible for triggering removal if something goes wrong?',
+    'What are the out-of-hours escalation paths?',
+  ],
+}

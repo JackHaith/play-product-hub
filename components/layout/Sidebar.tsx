@@ -15,6 +15,8 @@ const navItems = [
   { href: '/team',        label: 'Team',               description: 'People and governance' },
 ]
 
+const disabledNavPaths = new Set(['/service-map'])
+
 export function Sidebar() {
   const pathname = usePathname()
 
@@ -45,21 +47,31 @@ export function Sidebar() {
       <nav className="flex-1 p-2.5">
         <ul className="space-y-0.5">
           {navItems.map((item) => {
+            const isDisabled = disabledNavPaths.has(item.href)
             const isActive =
-              item.href === '/' ? pathname === '/' : pathname.startsWith(item.href)
+              !isDisabled && (item.href === '/' ? pathname === '/' : pathname.startsWith(item.href))
             return (
               <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className={cn(
-                    'flex items-center px-3 py-2 rounded-lg text-sm transition-colors',
-                    isActive
-                      ? 'bg-brand-50 text-brand-700 font-medium'
-                      : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900',
-                  )}
-                >
-                  {item.label}
-                </Link>
+                {isDisabled ? (
+                  <span
+                    aria-disabled="true"
+                    className="flex items-center px-3 py-2 rounded-lg text-sm text-slate-400 cursor-not-allowed"
+                  >
+                    {item.label}
+                  </span>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className={cn(
+                      'flex items-center px-3 py-2 rounded-lg text-sm transition-colors',
+                      isActive
+                        ? 'bg-brand-50 text-brand-700 font-medium'
+                        : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900',
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                )}
               </li>
             )
           })}

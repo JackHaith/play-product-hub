@@ -6,5 +6,6 @@ export const readiness1: ReadinessCheck = {
     description:
       'A clear and tested method exists for embedding interactive games within BBC articles.',
     status: 'Amber',
-    notes: 'Approach defined but not yet fully validated in a BBC article environment.',
+    audience: ['Stakeholder', 'Tech'],
+  notes: 'Approach defined but not yet fully validated in a BBC article environment.',
   }

@@ -9,6 +9,8 @@ import { PageHeader } from '@/components/ui/PageHeader'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import type { RiskSeverity, ReadinessStatus } from '@/types'
 import { cn } from '@/lib/utils'
+import { useView } from '@/context/ViewContext'
+import { filterByView } from '@/lib/audience'
 
 type RiskFilter = RiskSeverity | 'All'
 type ReadinessFilter = ReadinessStatus | 'All'
@@ -24,6 +26,7 @@ const readinessStatusDotClass: Record<ReadinessStatus, string> = {
 }
 
 export default function RisksPage() {
+  const { view } = useView()
   const [riskFilter, setRiskFilter] = useState<RiskFilter>('All')
   const [readinessFilter, setReadinessFilter] = useState<ReadinessFilter>('All')
   const severityPriority: Record<RiskSeverity, number> = {
@@ -31,29 +34,31 @@ export default function RisksPage() {
     Medium: 1,
     Low: 2,
   }
+  const visibleRisks = filterByView(risks, view)
+  const visibleReadinessChecks = filterByView(readinessChecks, view)
 
   const filteredRisks =
     riskFilter === 'All'
-      ? [...risks].sort((a, b) => {
+      ? [...visibleRisks].sort((a, b) => {
           const bySeverity = severityPriority[a.severity] - severityPriority[b.severity]
           if (bySeverity !== 0) return bySeverity
           return a.id.localeCompare(b.id)
         })
-      : risks.filter((r) => r.severity === riskFilter)
+      : visibleRisks.filter((r) => r.severity === riskFilter)
   const filteredReadiness =
     readinessFilter === 'All'
-      ? readinessChecks
-      : readinessChecks.filter((r) => r.status === readinessFilter)
+      ? visibleReadinessChecks
+      : visibleReadinessChecks.filter((r) => r.status === readinessFilter)
 
   const readinessCounts: Record<ReadinessStatus, number> = {
-    Red:   readinessChecks.filter((r) => r.status === 'Red').length,
-    Amber: readinessChecks.filter((r) => r.status === 'Amber').length,
-    Green: readinessChecks.filter((r) => r.status === 'Green').length,
+    Red:   visibleReadinessChecks.filter((r) => r.status === 'Red').length,
+    Amber: visibleReadinessChecks.filter((r) => r.status === 'Amber').length,
+    Green: visibleReadinessChecks.filter((r) => r.status === 'Green').length,
   }
   const riskCounts: Record<RiskSeverity, number> = {
-    High:   risks.filter((r) => r.severity === 'High').length,
-    Medium: risks.filter((r) => r.severity === 'Medium').length,
-    Low:    risks.filter((r) => r.severity === 'Low').length,
+    High:   visibleRisks.filter((r) => r.severity === 'High').length,
+    Medium: visibleRisks.filter((r) => r.severity === 'Medium').length,
+    Low:    visibleRisks.filter((r) => r.severity === 'Low').length,
   }
 
   return (
@@ -76,7 +81,7 @@ export default function RisksPage() {
             {(['All', 'Green', 'Amber', 'Red'] as ReadinessFilter[]).map((f) => {
               const count =
                 f === 'All'
-                  ? readinessChecks.length
+                  ? visibleReadinessChecks.length
                   : readinessCounts[f as ReadinessStatus]
               return (
                 <button
@@ -123,7 +128,7 @@ export default function RisksPage() {
           <div className="flex items-center bg-slate-100 rounded-lg p-0.5 gap-0.5">
             {(['All', 'High', 'Medium', 'Low'] as RiskFilter[]).map((f) => {
               const count =
-                f === 'All' ? risks.length : riskCounts[f as RiskSeverity]
+                f === 'All' ? visibleRisks.length : riskCounts[f as RiskSeverity]
               return (
                 <button
                   key={f}
