@@ -26,6 +26,7 @@ export function ReadinessCard({ check }: ReadinessCardProps) {
         </span>
       </div>
       <p className="text-xs text-slate-600 leading-relaxed mb-2">{check.description}</p>
+
       {check.notes && (
         <p className="text-xs text-slate-500 italic border-t border-black/5 pt-2 mt-2">
           {check.notes}

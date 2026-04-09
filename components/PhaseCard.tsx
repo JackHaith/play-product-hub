@@ -15,7 +15,7 @@ export function PhaseCard({ phase, defaultExpanded = false }: PhaseCardProps) {
   const statusCfg = phaseStatusConfig[phase.status]
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+    <div id={phase.id} className="bg-white rounded-xl border border-slate-200 overflow-hidden scroll-mt-24">
       <button
         className="w-full flex items-start gap-4 p-5 hover:bg-slate-50 transition-colors text-left"
         onClick={() => setExpanded(!expanded)}

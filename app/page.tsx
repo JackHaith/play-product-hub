@@ -24,9 +24,9 @@ export default function OverviewPage() {
   const currentPhase = phases.find((p) => p.status === 'in-progress') ?? phases[0]
   const openDecisions = decisions.filter((d) => d.status === 'Open')
   const highRisks = risks.filter((r) => r.severity === 'High')
-  const redChecks = readinessChecks.filter((r) => r.status === 'Red')
-  const amberChecks = readinessChecks.filter((r) => r.status === 'Amber')
   const greenChecks = readinessChecks.filter((r) => r.status === 'Green')
+  const amberChecks = readinessChecks.filter((r) => r.status === 'Amber')
+  const redChecks = readinessChecks.filter((r) => r.status === 'Red')
   const visibleWorkstreams = filterByView(workstreams, view)
   const activeWorkstreams = visibleWorkstreams.filter((w) => w.status === 'active')
 
@@ -58,9 +58,9 @@ export default function OverviewPage() {
           <p className="text-2xl font-semibold text-slate-900">{risks.length}</p>
           <p className="text-xs text-slate-500 mt-0.5">Tracked risks</p>
         </div>
-        <div className="bg-white rounded-xl border border-red-100 bg-red-50/50 p-4">
-          <p className="text-2xl font-semibold text-red-600">{redChecks.length}</p>
-          <p className="text-xs text-slate-500 mt-0.5">Red readiness items</p>
+        <div className="bg-white rounded-xl border border-slate-200 bg-slate-50/70 p-4">
+          <p className="text-2xl font-semibold text-slate-700">{redChecks.length}</p>
+          <p className="text-xs text-slate-500 mt-0.5">Not started readiness items</p>
         </div>
         <div className="bg-white rounded-xl border border-slate-200 p-4">
           <p className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-1.5">
@@ -85,15 +85,15 @@ export default function OverviewPage() {
         <div className="lg:col-span-2">
           <InfoCard title="What we're trying to prove">
             <p className="text-sm text-slate-700 leading-relaxed mb-4">
-              Can we embed interactive games within BBC articles in a way that is technically
-              reliable, analytically trackable, and operationally manageable — before committing to
-              any significant investment in scaling?
+              We can embed engaging, playable interactive games within BBC articles in a way that is technically
+              reliable, analytically trackable, and operationally manageable.
             </p>
             <ul className="space-y-2">
               {[
+                'We have created a set of fun, engaging and playable interactive games',
                 'The embedding approach works reliably across BBC article environments',
                 'Analytics can be tracked end-to-end, linking article and game interactions',
-                'The operational model is ready — content can be managed and removed safely',
+                'The operational model is ready, so content can be managed and removed safely',
                 'Games can drive meaningful audience engagement when placed in articles',
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-2.5">
@@ -235,28 +235,28 @@ export default function OverviewPage() {
           <div className="bg-white rounded-xl border border-slate-200 p-4">
             <div className="flex items-center gap-5 mb-4 pb-4 border-b border-slate-100">
               <div className="text-center">
-                <p className="text-2xl font-semibold text-red-600">{redChecks.length}</p>
-                <p className="text-xs text-slate-400 mt-0.5">Red</p>
+                <p className="text-2xl font-semibold text-brand-700">{greenChecks.length}</p>
+                <p className="text-xs text-slate-400 mt-0.5">Completed</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl font-semibold text-amber-500">{amberChecks.length}</p>
-                <p className="text-xs text-slate-400 mt-0.5">Amber</p>
+                <p className="text-2xl font-semibold text-brand-500">{amberChecks.length}</p>
+                <p className="text-xs text-slate-400 mt-0.5">In progress</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl font-semibold text-emerald-600">{greenChecks.length}</p>
-                <p className="text-xs text-slate-400 mt-0.5">Green</p>
+                <p className="text-2xl font-semibold text-slate-600">{redChecks.length}</p>
+                <p className="text-xs text-slate-400 mt-0.5">Not started</p>
               </div>
             </div>
             <div className="space-y-2">
               {redChecks.map((check) => (
                 <div key={check.id} className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-red-500 flex-shrink-0" />
+                  <span className="w-2 h-2 rounded-full bg-slate-400 flex-shrink-0" />
                   <p className="text-xs text-slate-600">{check.title}</p>
                 </div>
               ))}
               {amberChecks.slice(0, 2).map((check) => (
                 <div key={check.id} className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0" />
+                  <span className="w-2 h-2 rounded-full bg-brand-400 flex-shrink-0" />
                   <p className="text-xs text-slate-400">{check.title}</p>
                 </div>
               ))}

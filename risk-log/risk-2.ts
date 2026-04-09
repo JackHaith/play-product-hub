@@ -6,7 +6,7 @@ export const risk2: Risk = {
   description:
     'It may not be technically straightforward to connect user journey data from the BBC article layer with game-level interaction data. Without this linkage, key metrics like CTR and session context cannot be accurately measured.',
   severity: 'Medium',
-  likelihood: 'High',
+  likelihood: 'Medium',
   mitigation:
     'Validate analytics linkage during Phase 2 private testing before committing to live. Define the data structure and identifiers in Phase 1 as a prerequisite.',
   relatedPhase: 'Phase 2',

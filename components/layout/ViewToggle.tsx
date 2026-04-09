@@ -44,9 +44,6 @@ export function ViewToggle() {
           </button>
         ))}
       </div>
-      <span className="text-xs text-slate-400 hidden lg:block max-w-48 truncate">
-        {viewDescriptions[view]}
-      </span>
     </div>
   )
 }

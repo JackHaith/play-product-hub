@@ -17,13 +17,29 @@ const readinessStatusLabel: Record<ReadinessStatus, string> = {
   Amber: 'In progress',
   Red: 'Not started',
 }
+const readinessStatusDotClass: Record<ReadinessStatus, string> = {
+  Green: 'bg-brand-600',
+  Amber: 'bg-brand-400',
+  Red: 'bg-slate-400',
+}
 
 export default function RisksPage() {
   const [riskFilter, setRiskFilter] = useState<RiskFilter>('All')
   const [readinessFilter, setReadinessFilter] = useState<ReadinessFilter>('All')
+  const severityPriority: Record<RiskSeverity, number> = {
+    High: 0,
+    Medium: 1,
+    Low: 2,
+  }
 
   const filteredRisks =
-    riskFilter === 'All' ? risks : risks.filter((r) => r.severity === riskFilter)
+    riskFilter === 'All'
+      ? [...risks].sort((a, b) => {
+          const bySeverity = severityPriority[a.severity] - severityPriority[b.severity]
+          if (bySeverity !== 0) return bySeverity
+          return a.id.localeCompare(b.id)
+        })
+      : risks.filter((r) => r.severity === riskFilter)
   const filteredReadiness =
     readinessFilter === 'All'
       ? readinessChecks
@@ -73,9 +89,14 @@ export default function RisksPage() {
                       : 'text-slate-500 hover:text-slate-700',
                   )}
                 >
-                  {f === 'Red' && <span className="w-1.5 h-1.5 rounded-full bg-red-500" />}
-                  {f === 'Amber' && <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />}
-                  {f === 'Green' && <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />}
+                  {f !== 'All' && (
+                    <span
+                      className={cn(
+                        'w-1.5 h-1.5 rounded-full',
+                        readinessStatusDotClass[f as ReadinessStatus],
+                      )}
+                    />
+                  )}
                   {f === 'All' ? 'All' : readinessStatusLabel[f as ReadinessStatus]}
                   <span className="text-xs text-slate-400">{count}</span>
                 </button>
