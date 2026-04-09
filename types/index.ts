@@ -109,3 +109,15 @@ export interface ServiceMap {
   operationalJourney: JourneyStep[]
   systems: SystemItem[]
 }
+
+export type TeamGroup = 'BBC Trio' | 'Hippo Delivery Team'
+
+export interface TeamMember {
+  id: string
+  name: string
+  roleTitle: string
+  group: TeamGroup
+  profileImage: string
+  projectRole: string
+  responsibilities: string[]
+}

@@ -7,11 +7,12 @@ import { cn } from '@/lib/utils'
 const navItems = [
   { href: '/',            label: 'Overview',          description: 'Project at a glance' },
   { href: '/phases',      label: 'Phases',             description: 'Phased approach' },
-  { href: '/decisions',   label: 'Decisions',          description: 'Open and made' },
-  { href: '/service-map', label: 'Service Map',        description: 'End-to-end flow' },
-  { href: '/risks',       label: 'Risks & Readiness',  description: 'Gaps and blockers' },
-  { href: '/metrics',     label: 'Metrics',            description: "What we're measuring" },
   { href: '/workstreams', label: 'Workstreams',        description: 'Cross-functional view' },
+  { href: '/decisions',   label: 'Decisions',          description: 'Open and made' },
+  { href: '/risks',       label: 'Risks & Readiness',  description: 'Gaps and blockers' },
+  { href: '/service-map', label: 'Service Map',        description: 'End-to-end flow' },
+  { href: '/metrics',     label: 'Metrics',            description: "What we're measuring" },
+  { href: '/team',        label: 'Team',               description: 'People and governance' },
 ]
 
 export function Sidebar() {
