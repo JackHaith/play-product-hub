@@ -111,4 +111,30 @@ export const workstreams: Workstream[] = [
     status: 'planned',
     audience: ['Tech'],
   },
+  {
+    id: 'workstream-6',
+    name: 'Qualitative user research',
+    owner: 'Jack Haith, Steady, Lauren Gorton',
+    currentFocus:
+      'Planning additional moderated qualitative user research on game playability and engagement to further validate game concepts beyond the current core six. This workstream can run independently of embedding and technical readiness, and provides an opportunity to continue de-risking game quality while technical work progresses.',
+    dependencies: [
+      'Trio decision on which game concepts or variations provide highest learning value for further testing',
+      'Recruitment of additional participants (likely internal Hippo or BBC employees)',
+      'Availability of UR and delivery team resource to plan and run sessions',
+      'Selection and preparation of prototype game variations or backlog concepts for testing',
+    ],
+    risksBlockers: [
+      'Agreement on which games are highest priority for further testing',
+      'Limited UR capacity may constrain pace of research',
+    ],
+    nextSteps: [
+      'Confirm with Trio which game concepts or variations should be prioritised for further testing',
+      'Identify suitable backlog games or alternative variations for research',
+      'Recruit internal participants for moderated sessions',
+      'Schedule and run moderated playability and engagement testing',
+      'Synthesise findings and feed recommendations into game prioritisation and design decisions',
+    ],
+    status: 'planned',
+    audience: ['Design'],
+  },
 ]
