@@ -52,35 +52,33 @@ export default function OverviewPage() {
       </div>
 
       {/* Status bar */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
-        <div className="bg-white rounded-xl border border-slate-200 p-4">
-          <p className="text-2xl font-semibold text-slate-900">{openDecisions.length}</p>
-          <p className="text-xs text-slate-500 mt-0.5">Open decisions</p>
-        </div>
-        <div className="bg-white rounded-xl border border-slate-200 p-4">
-          <p className="text-2xl font-semibold text-slate-900">{visibleRisks.length}</p>
-          <p className="text-xs text-slate-500 mt-0.5">Tracked risks</p>
-        </div>
-        <div className="bg-white rounded-xl border border-slate-200 bg-slate-50/70 p-4">
-          <p className="text-2xl font-semibold text-slate-700">{redChecks.length}</p>
-          <p className="text-xs text-slate-500 mt-0.5">Not started readiness items</p>
-        </div>
-        <div className="bg-white rounded-xl border border-slate-200 p-4">
-          <p className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-1.5">
-            Current phase
-          </p>
-          <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-sm font-semibold text-slate-900">
-              Phase {currentPhase.number}
-            </span>
-            <StatusBadge
-              label={phaseStatusCfg.label}
-              bg={phaseStatusCfg.bg}
-              text={phaseStatusCfg.text}
-              size="sm"
-            />
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-8">
+        <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="bg-white rounded-xl border border-slate-200 p-4 flex flex-col items-center justify-center text-center min-h-[120px]">
+            <p className="text-2xl font-semibold text-slate-900">{openDecisions.length}</p>
+            <p className="text-xs text-slate-500 mt-0.5">Open decisions</p>
+          </div>
+          <div className="bg-white rounded-xl border border-slate-200 p-4 flex flex-col items-center justify-center text-center min-h-[120px]">
+            <p className="text-2xl font-semibold text-slate-900">{visibleRisks.length}</p>
+            <p className="text-xs text-slate-500 mt-0.5">Tracked risks</p>
+          </div>
+          <div className="bg-white rounded-xl border border-slate-200 bg-slate-50/70 p-4 flex flex-col items-center justify-center text-center min-h-[120px]">
+            <p className="text-2xl font-semibold text-slate-700">{redChecks.length}</p>
+            <p className="text-xs text-slate-500 mt-0.5">Not started readiness items</p>
           </div>
         </div>
+        <Link
+          href="https://games-jm.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-white rounded-xl border border-slate-200 p-4 min-h-[120px] transition-colors hover:border-brand-200 hover:bg-brand-50/20 focus:outline-none focus:ring-2 focus:ring-brand-200"
+        >
+          <p className="text-base font-semibold text-slate-900 leading-tight">View Games Hub</p>
+          <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
+            Explore current game concepts, backlog, and shortlisted prototypes.
+          </p>
+          <p className="text-xs font-medium text-brand-600 mt-2">Open →</p>
+        </Link>
       </div>
 
       {/* First row */}

@@ -2,6 +2,7 @@
 
 import { PageHeader } from '@/components/ui/PageHeader'
 import { SectionHeading } from '@/components/ui/SectionHeading'
+import { RaciMatrix } from '@/components/RaciMatrix'
 import { TeamMemberCard } from '@/components/TeamMemberCard'
 import { bbcTrio, hippoDeliveryTeam } from '@/data/team'
 import { useView } from '@/context/ViewContext'
@@ -47,6 +48,15 @@ export default function TeamPage() {
               <TeamMemberCard key={member.id} member={member} />
             ))}
           </div>
+        </section>
+
+        {/* RACI matrix */}
+        <section>
+          <SectionHeading
+            title="RACI matrix"
+            description="Responsibility and accountability across workstreams and team members (R = deliver, A = owns outcome, C = consulted, I = informed)."
+          />
+          <RaciMatrix />
         </section>
 
         {/* Decision-making model */}

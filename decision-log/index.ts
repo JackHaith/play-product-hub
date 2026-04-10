@@ -5,7 +5,7 @@ import { decision3 } from './decision-3'
 import { decision4 } from './decision-4'
 import { decision5 } from './decision-5'
 import { decision6 } from './decision-6'
-import { decision7 } from './decision-7'
+import { decisionGamesDistributionModel } from './decision-games-distribution-model'
 
 export const decisionlog: Decision[] = [
   decision1,
@@ -14,5 +14,5 @@ export const decisionlog: Decision[] = [
   decision4,
   decision5,
   decision6,
-  decision7,
+  decisionGamesDistributionModel,
 ]
