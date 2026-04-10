@@ -4,10 +4,11 @@ import { useState } from 'react'
 import { metrics } from '@/data/metrics'
 import { MetricCard } from '@/components/MetricCard'
 import { PageHeader } from '@/components/ui/PageHeader'
-import type { MetricStatus } from '@/types'
+import type { MetricPhase, MetricStatus } from '@/types'
 import { cn } from '@/lib/utils'
 
 type MetricFilter = MetricStatus | 'All'
+type PhaseFilter = MetricPhase | 'All'
 
 const filters: { label: string; value: MetricFilter }[] = [
   { label: 'All', value: 'All' },
@@ -16,16 +17,31 @@ const filters: { label: string; value: MetricFilter }[] = [
   { label: 'Blocked', value: 'blocked' },
 ]
 
+const phaseFilters: { label: string; value: PhaseFilter }[] = [
+  { label: 'All', value: 'All' },
+  { label: 'Phase 3', value: 'Phase 3' },
+  { label: 'Phase 4', value: 'Phase 4' },
+]
+
 export default function MetricsPage() {
-  const [filter, setFilter] = useState<MetricFilter>('All')
+  const [statusFilter, setStatusFilter] = useState<MetricFilter>('All')
+  const [phaseFilter, setPhaseFilter] = useState<PhaseFilter>('All')
 
-  const filtered =
-    filter === 'All' ? metrics : metrics.filter((m) => m.status === filter)
+  const filtered = metrics.filter((m) => {
+    const matchesStatus = statusFilter === 'All' || m.status === statusFilter
+    const matchesPhase = phaseFilter === 'All' || m.phase === phaseFilter
+    return matchesStatus && matchesPhase
+  })
 
-  const counts: Record<MetricStatus, number> = {
+  const statusCounts: Record<MetricStatus, number> = {
     proposed:  metrics.filter((m) => m.status === 'proposed').length,
     validated: metrics.filter((m) => m.status === 'validated').length,
     blocked:   metrics.filter((m) => m.status === 'blocked').length,
+  }
+
+  const phaseCounts: Record<MetricPhase, number> = {
+    'Phase 3': metrics.filter((m) => m.phase === 'Phase 3').length,
+    'Phase 4': metrics.filter((m) => m.phase === 'Phase 4').length,
   }
 
   return (
@@ -36,28 +52,38 @@ export default function MetricsPage() {
         description="This is a metrics definition page — not a live analytics dashboard. It documents what the team intends to measure and why, so that success criteria are explicit before the experiment begins."
       />
 
-      {/* Context note */}
-      <div className="bg-brand-50 border border-brand-100 rounded-xl p-4 mb-6">
-        <p className="text-sm text-brand-800 leading-relaxed">
-          <span className="font-semibold">Status note:</span> All metrics are currently in
-          &ldquo;proposed&rdquo; status. They need to be validated and agreed across product,
-          editorial, and analytics teams before Phase 2 concludes — so that tracking can be set up
-          and confirmed during private article testing.
-        </p>
-      </div>
-
       {/* Filters */}
-      <div className="flex items-center gap-3 mb-6">
+      <div className="flex items-center gap-3 mb-6 flex-wrap">
         <div className="flex items-center bg-slate-100 rounded-lg p-0.5 gap-0.5">
           {filters.map((f) => {
-            const count = f.value === 'All' ? metrics.length : counts[f.value as MetricStatus]
+            const count = f.value === 'All' ? metrics.length : statusCounts[f.value as MetricStatus]
             return (
               <button
                 key={f.value}
-                onClick={() => setFilter(f.value)}
+                onClick={() => setStatusFilter(f.value)}
                 className={cn(
                   'px-3 py-1.5 rounded-md text-xs font-medium transition-all flex items-center gap-1.5',
-                  filter === f.value
+                  statusFilter === f.value
+                    ? 'bg-white text-slate-900 shadow-sm'
+                    : 'text-slate-500 hover:text-slate-700',
+                )}
+              >
+                {f.label}
+                <span className="text-xs text-slate-400">{count}</span>
+              </button>
+            )
+          })}
+        </div>
+        <div className="flex items-center bg-slate-100 rounded-lg p-0.5 gap-0.5">
+          {phaseFilters.map((f) => {
+            const count = f.value === 'All' ? metrics.length : phaseCounts[f.value as MetricPhase]
+            return (
+              <button
+                key={f.value}
+                onClick={() => setPhaseFilter(f.value)}
+                className={cn(
+                  'px-3 py-1.5 rounded-md text-xs font-medium transition-all flex items-center gap-1.5',
+                  phaseFilter === f.value
                     ? 'bg-white text-slate-900 shadow-sm'
                     : 'text-slate-500 hover:text-slate-700',
                 )}

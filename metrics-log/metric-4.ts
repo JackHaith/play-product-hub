@@ -6,6 +6,6 @@ export const metric4: Metric = {
     whyItMatters:
       'Indicates whether the embedded game increases the overall time a user spends on the BBC article or site. Relevant to editorial value proposition.',
     status: 'proposed',
-    relatedPhase: 'Phase 3',
+    phase: 'Phase 3',
     notes: 'Needs to be compared against a baseline for the same article without the game.',
   }

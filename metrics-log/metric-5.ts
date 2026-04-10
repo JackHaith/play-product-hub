@@ -6,6 +6,6 @@ export const metric5: Metric = {
     whyItMatters:
       'Measures breadth of engagement — are users playing more than one game in a session? Relevant once multiple games are available.',
     status: 'proposed',
-    relatedPhase: 'Phase 4',
+    phase: 'Phase 4',
     notes: 'More relevant once multiple games are available. Track from Phase 3 as a baseline.',
   }

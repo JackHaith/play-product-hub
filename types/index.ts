@@ -4,6 +4,7 @@ export type RiskSeverity = 'Low' | 'Medium' | 'High'
 export type RiskLikelihood = 'Low' | 'Medium' | 'High'
 export type ReadinessStatus = 'Red' | 'Amber' | 'Green'
 export type MetricStatus = 'proposed' | 'validated' | 'blocked'
+export type MetricPhase = 'Phase 3' | 'Phase 4'
 export type WorkstreamStatus = 'active' | 'planned' | 'blocked'
 export type ViewType = 'Product' | 'Design' | 'Tech' | 'Stakeholder'
 export type Audience = ViewType | 'All'
@@ -72,7 +73,7 @@ export interface Metric {
   name: string
   whyItMatters: string
   status: MetricStatus
-  relatedPhase: string
+  phase: MetricPhase
   notes?: string
   audience?: Audience[]
 }
