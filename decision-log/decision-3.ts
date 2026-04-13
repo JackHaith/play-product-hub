@@ -17,10 +17,9 @@ export const decision3: Decision = {
         title: 'Remove game from article via Optimo',
         context: 'Use existing editorial tooling (Optimo) to remove the game embed from the article.',
         rationale: 'Uses existing editorial workflow. Does not require engineering involvement.',
-        benefits: ['No engineering required', 'Fast turnaround', 'Within editorial team control'],
+        benefits: ['No engineering required','Within editorial team control'],
         risks: [
-          'Only removes the embed, not the game itself',
-          'May not help if the game URL is shared directly',
+          'Only removes the embed, leaving a gap in the article',
         ],
       },
       {
@@ -42,9 +41,7 @@ export const decision3: Decision = {
         rationale: 'Provides direct control at the game level, independent of article publishing.',
         benefits: ['Direct game-level control', 'Does not affect article content'],
         risks: [
-          'Requires engineering involvement',
-          'Slower than editorial options',
-          'Not available out-of-hours without on-call',
+          'Requires engineering experience',
         ],
       },
   ],
