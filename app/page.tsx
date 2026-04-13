@@ -27,9 +27,9 @@ export default function OverviewPage() {
   const visibleRisks = filterByView(risks, view)
   const highRisks = visibleRisks.filter((r) => r.severity === 'High')
   const visibleReadinessChecks = filterByView(readinessChecks, view)
-  const greenChecks = visibleReadinessChecks.filter((r) => r.status === 'Green')
-  const amberChecks = visibleReadinessChecks.filter((r) => r.status === 'Amber')
-  const redChecks = visibleReadinessChecks.filter((r) => r.status === 'Red')
+  const completedChecks = visibleReadinessChecks.filter((r) => r.status === 'Completed')
+  const inProgressChecks = visibleReadinessChecks.filter((r) => r.status === 'In progress')
+  const notStartedChecks = visibleReadinessChecks.filter((r) => r.status === 'Not started')
   const visibleWorkstreams = filterByView(workstreams, view)
   const activeWorkstreams = visibleWorkstreams.filter((w) => w.status === 'active')
 
@@ -63,7 +63,7 @@ export default function OverviewPage() {
             <p className="text-xs text-slate-500 mt-0.5">Tracked risks</p>
           </div>
           <div className="bg-white rounded-xl border border-slate-200 bg-slate-50/70 p-4 flex flex-col items-center justify-center text-center min-h-[120px]">
-            <p className="text-2xl font-semibold text-slate-700">{redChecks.length}</p>
+            <p className="text-2xl font-semibold text-slate-700">{notStartedChecks.length}</p>
             <p className="text-xs text-slate-500 mt-0.5">Not started readiness items</p>
           </div>
         </div>
@@ -227,7 +227,7 @@ export default function OverviewPage() {
           <div className="flex items-center justify-between mb-3">
             <SectionHeading title="Readiness snapshot" />
             <Link
-              href="/risks"
+              href="/readiness"
               className="text-xs font-medium text-brand-600 hover:text-brand-700"
             >
               Full view →
@@ -236,34 +236,34 @@ export default function OverviewPage() {
           <div className="bg-white rounded-xl border border-slate-200 p-4">
             <div className="flex items-center gap-5 mb-4 pb-4 border-b border-slate-100">
               <div className="text-center">
-                <p className="text-2xl font-semibold text-brand-700">{greenChecks.length}</p>
+                <p className="text-2xl font-semibold text-brand-700">{completedChecks.length}</p>
                 <p className="text-xs text-slate-400 mt-0.5">Completed</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl font-semibold text-brand-500">{amberChecks.length}</p>
+                <p className="text-2xl font-semibold text-brand-500">{inProgressChecks.length}</p>
                 <p className="text-xs text-slate-400 mt-0.5">In progress</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl font-semibold text-slate-600">{redChecks.length}</p>
+                <p className="text-2xl font-semibold text-slate-600">{notStartedChecks.length}</p>
                 <p className="text-xs text-slate-400 mt-0.5">Not started</p>
               </div>
             </div>
             <div className="space-y-2">
-              {redChecks.map((check) => (
+              {notStartedChecks.map((check) => (
                 <div key={check.id} className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-slate-400 flex-shrink-0" />
                   <p className="text-xs text-slate-600">{check.title}</p>
                 </div>
               ))}
-              {amberChecks.slice(0, 2).map((check) => (
+              {inProgressChecks.slice(0, 2).map((check) => (
                 <div key={check.id} className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-brand-400 flex-shrink-0" />
                   <p className="text-xs text-slate-400">{check.title}</p>
                 </div>
               ))}
-              {amberChecks.length > 2 && (
+              {inProgressChecks.length > 2 && (
                 <p className="text-xs text-slate-400 pl-4">
-                  +{amberChecks.length - 2} amber items
+                  +{inProgressChecks.length - 2} in-progress items
                 </p>
               )}
             </div>

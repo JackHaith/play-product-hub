@@ -5,7 +5,8 @@ export const readiness_design_game_shortlist: ReadinessCheck = {
   title: 'Core six games shortlisted',
   description:
     'The initial set of prototype games was reduced to a core shortlist of six games using a BBC rating and suitability filter with client input.',
-  status: 'Green',
+  status: 'Completed',
+  phase: 'Phase 1',
   audience: ['Design'],
   notes:
     'This step narrowed the concept set to the games considered strongest and most suitable for further development and experimentation.',

@@ -26,9 +26,9 @@ export const decisionStatusConfig: Record<DecisionStatus, { bg: string; text: st
 }
 
 export const readinessStatusConfig: Record<ReadinessStatus, { bg: string; text: string; dot: string; border: string }> = {
-  Green: { bg: 'bg-brand-100', text: 'text-brand-800', dot: 'bg-brand-600', border: 'border-brand-200' },
-  Amber: { bg: 'bg-brand-50',  text: 'text-brand-700', dot: 'bg-brand-400', border: 'border-brand-100' },
-  Red:   { bg: 'bg-slate-50',  text: 'text-slate-600', dot: 'bg-slate-400', border: 'border-slate-200' },
+  Completed:   { bg: 'bg-brand-100', text: 'text-brand-800', dot: 'bg-brand-600', border: 'border-brand-200' },
+  'In progress': { bg: 'bg-brand-50',  text: 'text-brand-700', dot: 'bg-brand-400', border: 'border-brand-100' },
+  'Not started': { bg: 'bg-slate-50',  text: 'text-slate-600', dot: 'bg-slate-400', border: 'border-slate-200' },
 }
 
 export const severityConfig: Record<RiskSeverity, { bg: string; text: string }> = {

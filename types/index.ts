@@ -2,7 +2,8 @@ export type PhaseStatus = 'not-started' | 'in-progress' | 'complete' | 'planned'
 export type DecisionStatus = 'Open' | 'Recommended' | 'Decided' | 'Revisit'
 export type RiskSeverity = 'Low' | 'Medium' | 'High'
 export type RiskLikelihood = 'Low' | 'Medium' | 'High'
-export type ReadinessStatus = 'Red' | 'Amber' | 'Green'
+export type ReadinessStatus = 'Not started' | 'In progress' | 'Completed'
+export type ReadinessPhase = 'Phase 1' | 'Phase 2' | 'Phase 3' | 'Phase 4'
 export type MetricStatus = 'proposed' | 'validated' | 'blocked'
 export type MetricPhase = 'Phase 3' | 'Phase 4'
 export type WorkstreamStatus = 'active' | 'planned' | 'blocked'
@@ -64,6 +65,7 @@ export interface ReadinessCheck {
   title: string
   description: string
   status: ReadinessStatus
+  phase: ReadinessPhase
   notes?: string
   audience?: Audience[]
 }

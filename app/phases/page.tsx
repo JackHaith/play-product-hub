@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { phases } from '@/data/phases'
 import { PageHeader } from '@/components/ui/PageHeader'
 import { PhaseCard } from '@/components/PhaseCard'
@@ -48,6 +49,17 @@ export default function PhasesPage() {
           />
         ))}
       </div>
+
+      <Link
+        href="/readiness"
+        className="mt-6 block bg-white rounded-xl border border-slate-200 p-5 transition-colors hover:border-brand-200 hover:bg-brand-50/20 focus:outline-none focus:ring-2 focus:ring-brand-200"
+      >
+        <p className="text-base font-semibold text-slate-900 leading-tight">View Operational Readiness</p>
+        <p className="text-sm text-slate-500 mt-1.5 leading-relaxed">
+          Explore readiness across all phases, including technical, editorial, and design capabilities required before scaling.
+        </p>
+        <p className="text-xs font-medium text-brand-600 mt-3">View Readiness →</p>
+      </Link>
     </div>
   )
 }

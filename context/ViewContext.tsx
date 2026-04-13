@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useState, useEffect, type ReactNode } from 'react'
+import { createContext, useContext, useState, type ReactNode } from 'react'
 import type { ViewType } from '@/types'
 
 interface ViewContextType {
@@ -14,14 +14,14 @@ const ViewContext = createContext<ViewContextType>({
 })
 
 export function ViewProvider({ children }: { children: ReactNode }) {
-  const [view, setViewState] = useState<ViewType>('Product')
-
-  useEffect(() => {
+  const [view, setViewState] = useState<ViewType>(() => {
+    if (typeof window === 'undefined') return 'Product'
     const stored = localStorage.getItem('hub-view')
     if (stored && ['Product', 'Design', 'Tech', 'Stakeholder'].includes(stored)) {
-      setViewState(stored as ViewType)
+      return stored as ViewType
     }
-  }, [])
+    return 'Product'
+  })
 
   const setView = (v: ViewType) => {
     setViewState(v)
@@ -69,6 +69,11 @@ export const viewFocusMessages: Record<string, Partial<Record<ViewType, string>>
   risks: {
     Tech: 'Tech view — this page is a priority. Review readiness gaps and technical risks before Phase 3.',
     Stakeholder: 'Stakeholder view — red readiness items are blockers for Phase 3 and need owner action.',
+  },
+  readiness: {
+    Tech: 'Tech view — review readiness by phase to confirm what blocks progression to the live experiment.',
+    Stakeholder: 'Stakeholder view — focus on operational readiness gaps that still need owner alignment.',
+    Design: 'Design view — track design readiness items mapped to Phase 1 and Phase 2.',
   },
   metrics: {
     Stakeholder: 'Stakeholder view — these metrics define what success looks like. None are yet agreed.',
