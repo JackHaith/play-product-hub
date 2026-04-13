@@ -63,7 +63,7 @@ export default function ReadinessPage() {
           </div>
 
           <div className="flex items-center bg-slate-100 rounded-lg p-0.5 gap-0.5">
-            {(['All', 'Not started', 'In progress', 'Completed'] as ReadinessStatusFilter[]).map((f) => (
+            {(['All', 'Completed', 'In progress', 'Not started'] as ReadinessStatusFilter[]).map((f) => (
               <button
                 key={f}
                 onClick={() => setStatusFilter(f)}
