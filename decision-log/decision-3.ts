@@ -47,7 +47,6 @@ export const decision3: Decision = {
   ],
   stakeholderQuestions: [
     'Is Optimo removal reliable enough to be the primary mechanism?',
-    'Who is responsible for triggering removal if something goes wrong?',
-    'What are the out-of-hours escalation paths?',
+    'Who is responsible for triggering removal out of hours?',
   ],
 }

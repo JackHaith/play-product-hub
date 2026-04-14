@@ -12,6 +12,7 @@ const navItems = [
   { href: '/decisions',   label: 'Decisions',          description: 'Open and made' },
   { href: '/risks',       label: 'Risks',              description: 'Gaps and blockers' },
   { href: '/service-map', label: 'Service Map',        description: 'End-to-end flow' },
+  { href: '/service-operations-model', label: 'Service & Operations', description: 'Delivery and controls' },
   { href: '/metrics',     label: 'Metrics',            description: "What we're measuring" },
   { href: '/team',        label: 'Team',               description: 'People and governance' },
 ]
